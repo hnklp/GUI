@@ -10,9 +10,9 @@ namespace EFCore.Data
         {
             public int MobId { get; set; }
             public string Name { get; set; }
-            public int SpeciesId { get; set; }
-            public virtual Species Species { get; set; }
-            public DateTime Date { get; set; } = DateTime.Now;
+            public int? SpeciesId { get; set; }
+            public virtual Species? Species { get; set; }
+            public DateTime DateOfCapture { get; set; } = DateTime.Now;
 
         }
 }

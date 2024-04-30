@@ -1,22 +1,22 @@
-﻿using System;
+﻿using Bogus;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EFCore.Data;
 
 namespace EFCore.Generator
 {
-    class Program
+    class DataGenerator
     {
-        static unsafe void IdGenerator()
+        public static IList<Mob> GenerateMobs(int count)
         {
-            int number = 0;
-            int* p = &number;
+            Faker<Mob> generator = new Faker<Mob>()
+                .StrictMode(true)
+                .RuleFor(x => x.MobId, f => f.IndexGlobal)
+                .RuleFor(x => x.Name, f => f.Person.FirstName)
+                .RuleFor(x => x.DateOfCapture, f => f.Person.DateOfBirth)
+                .RuleFor(x => x.SpeciesId, f => 1)
+                .RuleFor(x => x.Species, f => null);
 
-            while (*p < 50)
-            {
-                (*p)++;
-            }
+            return generator.Generate(count);
         }
     }
 }

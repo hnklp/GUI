@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace EFCore.Data
 {
@@ -13,9 +14,6 @@ namespace EFCore.Data
         public string Title { get; set; }
         public HostilityLevel Hostility { get; set; }
 
-        public virtual ICollection<Mob>
-            Mobs
-        { get; private set; } =
-            new ObservableCollection<Mob>();
+        public virtual List<Mob>? Mobs { get; set; }
     }
 }
