@@ -9,9 +9,9 @@ namespace EFCore
     public class MainWindowViewModel
     {
         public ObservableCollection<Mob> Mobs { get; } = new();
-        public PeopleContext Context { get; }
+        public MobsContext Context { get; }
 
-        public MainWindowViewModel(PeopleContext context)
+        public MainWindowViewModel(MobsContext context)
         {
             BindingOperations.EnableCollectionSynchronization(Mobs, new object());
             Context = context ?? throw new ArgumentNullException(nameof(context));
@@ -19,11 +19,11 @@ namespace EFCore
 
         public async Task LoadData()
         {
-            await foreach(var person in Context.People.AsAsyncEnumerable().ConfigureAwait(false))
+            await foreach(var mob in Context.Mobs.AsAsyncEnumerable().ConfigureAwait(false))
             {
                 //Just simulating a slow query
                 await Task.Delay(100).ConfigureAwait(false);
-                Mobs.Add(person);
+                Mobs.Add(mob);
             }
         }
     }

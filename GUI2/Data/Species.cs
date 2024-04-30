@@ -10,7 +10,7 @@ namespace EFCore.Data
     public class Species
     {
         public int SpeciesId { get; set; }
-        public string? Title { get; set; }
+        public string Title { get; set; }
         public HostilityLevel Hostility { get; set; }
 
         public virtual ICollection<Mob>

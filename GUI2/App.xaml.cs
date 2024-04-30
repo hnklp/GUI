@@ -13,7 +13,7 @@ namespace EFCore
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            using(var context= new PeopleContext())
+            using(var context= new MobsContext())
             {
                 context.Database.Migrate();
                 // Seed the database

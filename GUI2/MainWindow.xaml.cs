@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using EFCore.Data;
 
 namespace EFCore
 {
@@ -12,7 +13,7 @@ namespace EFCore
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = ViewModel = new MainWindowViewModel(new PeopleContext());
+            DataContext = ViewModel = new MainWindowViewModel(new MobsContext());
 
             Loaded += MainWindow_Loaded;
         }
