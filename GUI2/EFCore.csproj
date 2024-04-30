@@ -12,4 +12,5 @@
   <ItemGroup>
     <Resources Include="Data\" />
   </ItemGroup>
+  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 </Project>
