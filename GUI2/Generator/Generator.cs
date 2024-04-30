@@ -8,19 +8,15 @@ namespace EFCore.Generator
 {
     class Program
     {
-        static void Main()
+        static unsafe void Main()
         {
-            unsafe
-            {
-                int number = 0;
-                int* p = &number;
+            int number = 0;
+            int* p = &number;
 
-                while (*p < 50)
-                {
-                    (*p)++;
-                }
+            while (*p < 50)
+            {
+                (*p)++;
             }
         }
-
     }
 }
