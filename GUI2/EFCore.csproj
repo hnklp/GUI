@@ -3,6 +3,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0-ci2273" />
@@ -12,5 +13,4 @@
   <ItemGroup>
     <Resources Include="Data\" />
   </ItemGroup>
-  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 </Project>
