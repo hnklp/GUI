@@ -8,7 +8,7 @@ namespace EFCore.Generator
 {
     class Program
     {
-        static unsafe void Main()
+        static unsafe void IdGenerator()
         {
             int number = 0;
             int* p = &number;
