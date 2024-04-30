@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0-ci2273" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resources Include="Data\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,754 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": true
+    },
+    "targetId": "",
+    "targetDisplayName": ".NET 8.0"
+  },
+  "analysisStartTime": "2024-04-30T14:10:18.0964904Z",
+  "analysisEndTime": "2024-04-30T14:10:23.3845379Z",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 4,
+      "incidents": 35,
+      "effort": 35
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 31,
+        "Optional": 2,
+        "Potential": 2,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 4,
+        "Project": 1,
+        "Api": 30
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+      "startingProject": true,
+      "issues": 4,
+      "storyPoints": 35,
+      "ruleInstances": [
+        {
+          "incidentId": "f1ab2f92-3e75-4b94-90a4-d40b586f4ee9",
+          "ruleId": "NuGet.0002",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.EntityFrameworkCore.Sqlite, 5.0.0",
+            "snippet": "Microsoft.EntityFrameworkCore.Sqlite, 5.0.0\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Sqlite 8.0.4"
+          }
+        },
+        {
+          "incidentId": "a7c69765-2dc0-4343-acd5-84b96fabe6e7",
+          "ruleId": "NuGet.0002",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.EntityFrameworkCore.Design, 5.0.0",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 5.0.0\n\nRecommendation:\n\nMicrosoft.EntityFrameworkCore.Design 8.0.4"
+          }
+        },
+        {
+          "incidentId": "c6012a3a-f433-42b0-b95b-f0e9986cfac9",
+          "ruleId": "NuGet.0005",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.EntityFrameworkCore.Sqlite, 5.0.0",
+            "snippet": "Microsoft.EntityFrameworkCore.Sqlite, 5.0.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217"
+          }
+        },
+        {
+          "incidentId": "9b158de0-dbf1-4d99-b864-b361a559cf88",
+          "ruleId": "NuGet.0005",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "Package",
+            "path": "Microsoft.EntityFrameworkCore.Design, 5.0.0",
+            "snippet": "Microsoft.EntityFrameworkCore.Design, 5.0.0\n\nRecommendation:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217"
+          }
+        },
+        {
+          "incidentId": "e358182e-9c00-4762-bd4f-c9620fef19ea",
+          "ruleId": "Project.0002",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+            "snippet": "Current: net5.0-windows\nNew: net8.0-windows"
+          }
+        },
+        {
+          "incidentId": "058ef8fc-c940-40ad-9a15-576a3a1e25dd",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.cs",
+            "snippet": "migrationBuilder.DropTable(\n                name: \u0022People\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder.DropTable(System.String,System.String)",
+            "line": 30,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationbuilder.droptable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "8f7150de-75b6-45e9-901a-687c8ed06d6b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.cs",
+            "snippet": "table.Column\u003Cstring\u003E(type: \u0022TEXT\u0022, nullable: true)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 12,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0766e28c-c57b-4b66-b3b7-96ae17dd0e99",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\App.xaml.cs",
+            "snippet": "context.Database.Migrate()\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade)",
+            "line": 17,
+            "column": 16,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "bd0750e7-170d-4344-b1f7-383b6d79ede6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022FirstName\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 29,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "89f858e5-86c9-43f7-9d91-136ecd180b26",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.cs",
+            "snippet": "table.Column\u003CDateTime\u003E(type: \u0022TEXT\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 12,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f9a5b0ef-0724-4768-8d23-156f0a3d234f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.cs",
+            "snippet": "table.Column\u003Cint\u003E(type: \u0022INTEGER\u0022, nullable: false)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Migrations.Operations.Builders.ColumnsBuilder.Column\u0060\u00601(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Boolean,System.String,System.Boolean,System.Object,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})",
+            "line": 12,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.operations.builders.columnsbuilder.column"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f24e34af-d3d0-4cf4-a813-774c12707d3e",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "modelBuilder\n                .HasAnnotation(\u0022ProductVersion\u0022, \u00225.0.0\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.HasAnnotation(System.String,System.Object)",
+            "line": 15,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.hasannotation"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "83e8eb14-a6f9-45ec-8378-b4a679de85d5",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "ModelSnapshot\n\nAPI signature T:Microsoft.EntityFrameworkCore.Infrastructure.ModelSnapshot",
+            "line": 10,
+            "column": 47,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.infrastructure.modelsnapshot"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "eec2b1a4-cb6c-4aea-bf47-993bb95c766c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\App.xaml.cs",
+            "snippet": "context.SaveChanges()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges",
+            "line": 26,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "75fc2943-3a78-47a8-9e47-6f7d047d06cc",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "DbContext(typeof(PeopleContext))\n\nAPI signature T:Microsoft.EntityFrameworkCore.Infrastructure.DbContextAttribute",
+            "line": 10,
+            "column": 5,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.infrastructure.dbcontextattribute"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "3c2e3242-a65b-4b6d-8a90-e43c4fa75097",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022LastName\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 32,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "1e20d004-645c-4ecc-9a75-84d56651a6ae",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022LastName\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 30,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "1eac2d0b-d0c9-4978-87dd-0cfba399348c",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "modelBuilder.Entity(\u0022TestData.Person\u0022, b =\u003E\n                {\n                    b.Property\u003Cint\u003E(\u0022ID\u0022)\n                        .ValueGeneratedOnAdd()\n                        .HasColumnType(\u0022INTEGER\u0022);\n\n                    b.Property\u003CDateTime\u003E(\u0022DOB\u0022)\n                        .HasColumnType(\u0022TEXT\u0022);\n\n                    b.Property\u003Cstring\u003E(\u0022FirstName\u0022)\n                        .HasColumnType(\u0022TEXT\u0022);\n\n                    b.Property\u003Cstring\u003E(\u0022LastName\u0022)\n                        .HasColumnType(\u0022TEXT\u0022);\n\n                    b.HasKey(\u0022ID\u0022);\n\n                    b.ToTable(\u0022People\u0022);\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 18,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "da60b45e-980b-4378-95aa-d28e08f0eaea",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\PeopleContext.cs",
+            "snippet": "DbContext\n\nAPI signature T:Microsoft.EntityFrameworkCore.DbContext",
+            "line": 5,
+            "column": 33,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "84424a25-6377-4158-a03e-f41067cb00f8",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "b.ToTable(\u0022People\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 35,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0f6feb96-1205-443a-a82d-e9eaf1f0c15b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\PeopleContext.cs",
+            "snippet": ": base(options)\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)",
+            "line": 14,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.dbcontext"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "bc1e812f-51dc-4936-beb6-bcfac3be590b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "DbContext(typeof(PeopleContext))\n\nAPI signature T:Microsoft.EntityFrameworkCore.Infrastructure.DbContextAttribute",
+            "line": 9,
+            "column": 5,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.infrastructure.dbcontextattribute"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "a88913fe-b8ff-4d9f-9559-2be8f39c2eea",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cstring\u003E(\u0022FirstName\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 27,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "da3bf23b-7fb2-4cca-abac-dc209ab0d3c7",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\PeopleContext.cs",
+            "snippet": "Set\u003CPerson\u003E()\n\nAPI signature M:Microsoft.EntityFrameworkCore.DbContext.Set\u0060\u00601",
+            "line": 17,
+            "column": 39,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.set"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "4b2b1b84-5999-45fa-ae04-a0434420fc71",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022ID\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 20,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "4ca3495c-3d83-4097-bc37-29bd74af434f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "b.HasKey(\u0022ID\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 35,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f09707b6-750b-420c-ab74-0c03c5e45e4b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022DOB\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 26,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "c3177982-cf4c-4888-b656-e5cda10591ea",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "modelBuilder\n                .HasAnnotation(\u0022ProductVersion\u0022, \u00225.0.0\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.HasAnnotation(System.String,System.Object)",
+            "line": 17,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.hasannotation"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "c9b3b650-2c7f-4d84-a533-00d19c131cc6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "b.Property\u003CDateTime\u003E(\u0022DOB\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 24,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "365b4b5d-c502-4c2a-b915-a441afd716e5",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "b.ToTable(\u0022People\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String)",
+            "line": 37,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalentitytypebuilderextensions.totable"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "0d76d9f2-f0ba-48ac-b8c6-5e47c392c222",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "modelBuilder.Entity(\u0022TestData.Person\u0022, b =\u003E\n                {\n                    b.Property\u003Cint\u003E(\u0022ID\u0022)\n                        .ValueGeneratedOnAdd()\n                        .HasColumnType(\u0022INTEGER\u0022);\n\n                    b.Property\u003CDateTime\u003E(\u0022DOB\u0022)\n                        .HasColumnType(\u0022TEXT\u0022);\n\n                    b.Property\u003Cstring\u003E(\u0022FirstName\u0022)\n                        .HasColumnType(\u0022TEXT\u0022);\n\n                    b.Property\u003Cstring\u003E(\u0022LastName\u0022)\n                        .HasColumnType(\u0022TEXT\u0022);\n\n                    b.HasKey(\u0022ID\u0022);\n\n                    b.ToTable(\u0022People\u0022);\n                })\n\nAPI signature M:Microsoft.EntityFrameworkCore.ModelBuilder.Entity(System.String,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder})",
+            "line": 20,
+            "column": 12,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.modelbuilder.entity"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "f74d45c7-9cd5-4b8d-a213-b148f741e735",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\PeopleContextModelSnapshot.cs",
+            "snippet": "b.HasKey(\u0022ID\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasKey(System.String[])",
+            "line": 33,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.haskey"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "c24db18c-6121-4908-a37c-d357207f3937",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.cs",
+            "snippet": "Migration\n\nAPI signature T:Microsoft.EntityFrameworkCore.Migrations.Migration",
+            "line": 8,
+            "column": 41,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migration"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "a78c1adb-0699-4f06-b3d7-e5e79fde1fd6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "b.Property\u003Cint\u003E(\u0022ID\u0022)\n\nAPI signature M:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.Property\u0060\u00601(System.String)",
+            "line": 22,
+            "column": 20,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder.property"
+              }
+            ]
+          }
+        },
+        {
+          "incidentId": "7e28a782-7940-48a6-8e1e-8ebe21e30cff",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.EntityFrameworkCore.Relational, 8.0.2.",
+          "projectPath": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\EFCore.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "C:\\Users\\hynek\\source\\repos\\GUI2\\GUI2\\Migrations\\20201125174236_InitialCreate.Designer.cs",
+            "snippet": "Migration(\u002220201125174236_InitialCreate\u0022)\n\nAPI signature T:Microsoft.EntityFrameworkCore.Migrations.MigrationAttribute",
+            "line": 11,
+            "column": 5,
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.migrations.migrationattribute"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530"
+        }
+      ]
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "description": "NuGet package is deprecated.\n\nGo to its documentation and if there is a guidance for replacement of functionality provided by this package.",
+      "label": "NuGet package is deprecated",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531"
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to correspinding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in moderrn .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227"
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226"
+        }
+      ]
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "description": "Some API that lived in older versions of .NET frameworks were moved to standalone NuGet packages that could be added to projects explicitly.",
+      "label": "API available in NuGet package",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679"
+        }
+      ]
+    }
+  }
+}
