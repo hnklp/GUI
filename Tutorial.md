@@ -290,9 +290,10 @@ Máme data v datagridu a dokonce je můžeme měnit. Jenomže se nám to zatím 
 Vaším úkolem je přidat tlačítka do uživatelského rozhraní `MainWindow.xaml`, která umožní uživatelům ukládat změny provedené v DataGridu.
 
 - Tlačítko pro ukládání: Přidejte tlačítko s názvem `Save`, které umožní uživatelům ukládat změny provedené v DataGridu.
-- Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.
-
-#### Řešení:
+- Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.\
+  
+<details>
+<summary>Řešení</summary>
 
 `MainWindow.xaml`:
 
@@ -357,7 +358,7 @@ public void GenerateMobs()
     LoadData();
 }
 ```
-
+</details>
 ## Nové modely
 
 No, ale pořád máme jen seznam našich mobů s jedním modelem. To může být nepraktické. Když z tabulky nepoznáme, jestli je František slepice v ohrádce nebo creeper, co se nám usídlil ve sklepě pod domem.
@@ -369,8 +370,8 @@ Vaším úkolem je přidat do aplikace další model pro druhy mobů, abychom mo
 - Vytvoření modelu pro druhy mobů: Vytvořte novou třídu Species se vlastnostmi pro identifikátor druhu (SpeciesId), název (Title) a úroveň nepřátelství (Hostility). Vlastnost Hostility bude enum HostilityLevel.
 - Vytvoření enumu pro úroveň nepřátelství: Vytvořte enum HostilityLevel s třemi hodnotami: Harmless, FightsBack a Hostile.
 - Aktualizace modelu "mob": Přidejte do modelu Mob cizí klíč pro species.
-
-#### Řešení:
+<details>
+<summary>Řešení</summary>
 
 `Species.cs`:
 ```csharp
@@ -406,3 +407,4 @@ public class Mob
 ```
 
 Po tomto kroku uděláme znovu migraci, protože jsme změnili databázi.
+</details>
