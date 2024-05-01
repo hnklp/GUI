@@ -2,7 +2,7 @@
 # ⛏ An app to manage our minecraft mob database
 
 > [!CAUTION]
-> This text was machine translated. We are not responsible for any damage caused to You, Your loved ones, The Universe™ or Your property.
+> This text was machine translated. We are not responsible for any harm caused to You, Your loved ones, The Universe™ or Your property.
 
 ### What is ORM?
 ORM (Object-Relational Mapping), is a programming technique that facilitates database management in object-oriented languages. With ORM, a developer can manipulate data in a database directly using objects in a programming language without having to write complex SQL queries. This greatly simplifies and speeds up application development, improves code readability and project sustainability.
@@ -411,4 +411,54 @@ public class Mob
 ```
 
 After this step, we do the migration again because we changed the database.
+</details>
+
+## New models
+
+Well, we still only have a list of our one-model mobs. That can be impractical. If we can't tell from the table if Francis is a chicken in a pen or a creeper that's taken up residence in the basement under our house.
+
+#### Independent work assignment:
+
+Your task is to add another model for mob species to the app so that we can assign a species to each "mob".
+
+- Create a new Species class with properties for the species identifier (SpeciesId), name (Title) and hostility level (Hostility). The Hostility property will be the enum HostilityLevel.
+- Create a HostilityLevel enum: Create a HostilityLevel enum with three values: Harmless, FightsBack and Hostile.
+- Mob Update: Add a foreign key for species to the Mob model.
+<details>
+<summary>Solution</summary>
+
+`Species.cs`:
+```csharp
+    public class Species
+    {
+        public int SpeciesId { get; set; }
+        public string Title { get; set; }
+        public HostilityLevel Hostility { get; set; }
+        public virtual List<Mob>? Mobs { get; set; }
+    }
+```
+
+`HostilityLevel.cs`:
+```csharp
+    public enum HostilityLevel
+    {
+        Harmless = 1,
+        FightsBack = 2,
+        Hostile = 3
+    }
+```
+
+`Mobs.cs`:
+```csharp
+public třída Mob
+{
+    public int MobId { get; set; }
+    public string Name { get; set; }
+    public DateTime DateOfCapture { get; set; } = DateTime.Now;
+    public int? SpeciesId { get; set; }
+    public virtual Species? Species { get; set; }
+}
+```
+
+Po tomto kroku uděláme znovu migraci, protože jsme změnili databázi.
 </details>
