@@ -16,5 +16,7 @@ namespace EFCore.Data
         { }
 
         public DbSet<Mob> Mobs => Set<Mob>();
+
+        public DbSet<Species> Species => Set<Species>();
     }
 }

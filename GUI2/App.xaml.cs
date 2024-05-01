@@ -20,17 +20,7 @@ namespace EFCore
             {
                 context.Database.Migrate();
 
-                context.Add(new Species
-                {
-                    Title = "Creeper",
-                    Hostility = HostilityLevel.Hostile,
-                });
-                context.Add(new Species
-                {
-                    Title = "Zombie",
-                    Hostility = HostilityLevel.Hostile,
-                });
-                context.SaveChanges();
+                addPresetSpecies(context);
 
                 if (!context.Mobs.Any())
                 {
@@ -44,6 +34,72 @@ namespace EFCore
             }
 
             base.OnStartup(e);
+        }
+
+        public static void addPresetSpecies(MobsContext context)
+        {
+
+            context.Add(new Species
+            {
+                Title = "Creeper",
+                Hostility = HostilityLevel.Hostile,
+            });
+            
+            context.Add(new Species
+            {
+                Title = "Zombie",
+                Hostility = HostilityLevel.Hostile,
+            });
+
+            context.Add(new Species
+            {
+                Title = "Player",
+                Hostility = HostilityLevel.FightsBack,
+            });
+
+            context.Add(new Species
+            {
+                Title = "Giant",
+                Hostility = HostilityLevel.Hostile,
+            });
+
+            context.Add(new Species
+            {
+                Title = "Snow Golem",
+                Hostility = HostilityLevel.Harmless,
+            });
+
+            context.Add(new Species
+            {
+                Title = "The Killer Bunny",
+                Hostility = HostilityLevel.Hostile,
+            });
+
+            context.Add(new Species
+            {
+                Title = "Ocelot",
+                Hostility = HostilityLevel.Harmless,
+            });
+
+            context.Add(new Species
+            {
+                Title = "Mob",
+                Hostility = HostilityLevel.Harmless,
+            });
+
+            context.Add(new Species
+            {
+                Title = "Pink Wither",
+                Hostility = HostilityLevel.Harmless,
+            });
+
+            context.Add(new Species
+            {
+                Title = "Spider Jockey",
+                Hostility = HostilityLevel.Hostile,
+            });
+
+            context.SaveChanges();
         }
     }
 }
