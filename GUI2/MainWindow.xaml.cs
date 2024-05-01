@@ -6,19 +6,33 @@ namespace EFCore
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : Window
     {
         private MainWindowViewModel ViewModel { get; }
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = ViewModel = new MainWindowViewModel(new MobsContext());
+            ViewModel = new MainWindowViewModel(new MobsContext());
+            DataContext = ViewModel;
 
             Loaded += MainWindow_Loaded;
         }
 
-        //Be careful when using async void as these are fire and forget
-        private async void MainWindow_Loaded(object sender, RoutedEventArgs e) => await ViewModel.LoadData();
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LoadData();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SaveChanges();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.DeleteAllMobs();
+            ViewModel.GenerateMobs();
+        }
     }
 }

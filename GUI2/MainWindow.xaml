@@ -11,10 +11,10 @@
         d:DataContext="{d:DesignInstance Type={x:Type local:MainWindowViewModel}}">
     
     <Grid>
-        <DataGrid ItemsSource="{Binding Mobs}"/>
+        <DataGrid x:Name="MobsGrid"  ItemsSource="{Binding Mobs}"/>
         
-        <Button x:Name="Button1" Content="Button1" HorizontalAlignment="Left" Margin="690,2,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="690,2,0,0" VerticalAlignment="Top" Width="90" Click="SaveButton_Click"/>
         
-        <Button x:Name="Button2" Content="Button2" HorizontalAlignment="Left" Margin="585,2,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="Button" Content="Magic Button" HorizontalAlignment="Left" Margin="585,2,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
     </Grid>
 </Window>

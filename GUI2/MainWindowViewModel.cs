@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using EFCore.Data;
+using EFCore.Generator;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFCore
 {
@@ -13,18 +16,48 @@ namespace EFCore
 
         public MainWindowViewModel(MobsContext context)
         {
-            BindingOperations.EnableCollectionSynchronization(Mobs, new object());
             Context = context ?? throw new ArgumentNullException(nameof(context));
+            Mobs.CollectionChanged += Mobs_CollectionChanged;
         }
 
-        public async Task LoadData()
+
+        public void LoadData()
         {
-            await foreach(var mob in Context.Mobs.AsAsyncEnumerable().ConfigureAwait(false))
+            foreach(var mob in Context.Mobs)
             {
-                //Just simulating a slow query
-                await Task.Delay(100).ConfigureAwait(false);
                 Mobs.Add(mob);
             }
+        }
+
+        public void SaveChanges()
+        {
+            Context.SaveChanges();
+        }
+
+        private void Mobs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(Mobs).Refresh();
+        }
+
+        public void DeleteAllMobs()
+        {
+            foreach (var mob in Mobs)
+            {
+                Context.Mobs.Remove(mob);
+            }
+            Mobs.Clear();
+            Context.SaveChanges();
+        }
+
+        public void GenerateMobs()
+        {
+            foreach (var mob in DataGenerator.GenerateMobs(20))
+            {
+                mob.MobId = 0;
+                Context.Mobs.Add(mob);
+            }
+            Context.SaveChanges();
+            LoadData();
         }
     }
 }
