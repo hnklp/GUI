@@ -11,8 +11,15 @@
         d:DataContext="{d:DesignInstance Type={x:Type local:MainWindowViewModel}}">
     
     <Grid>
-        <DataGrid x:Name="MobsGrid"  ItemsSource="{Binding Mobs}"/>
-        
+        <DataGrid x:Name="MobsGrid"  ItemsSource="{Binding Mobs}" AutoGenerateColumns="False"
+                  IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding MobId}"
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Date of Capture" Binding="{Binding DateOfCapture, StringFormat='d'}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
         <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="690,2,0,0" VerticalAlignment="Top" Width="90" Click="SaveButton_Click"/>
         
         <Button x:Name="Button" Content="Magic Button" HorizontalAlignment="Left" Margin="585,2,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>

@@ -6,7 +6,7 @@
 
 ## Vytvoření nového projektu 
 
-Prvním krokem je vytvoření nového projektu ve Visual Studiu. Zvolíme WPF (Windows Presentation Foundation) jako typ projektu. Budeme používat .NET 8.
+Prvním krokem je vytvoření nového projektu ve Visual Studiu. Zvolíme WPF C# (Windows Presentation Foundation) jako typ projektu. Budeme používat .NET 8.
 
 Budeme potřebovat nainstalovat několik balíčků:
 - Microsoft.EntityFrameworkCore.Sqlite
@@ -26,30 +26,26 @@ Atribut je povinný a nebo ne podle toho, zda proměnná může obsahovat null.
 Ukázka vztahu 1:N
 
 ```csharp
-public class Author
+public class Tool
 {
-    public int AuthorId { get; set; }
+    public int Id { get; set; }
     public string Name { get; set; }
-    
-    // Navigační vlastnost pro knihy tohoto autora
-    public ICollection<Book> Books { get; set; }
+    public ICollection<Enchantment> Enchantments { get; set; }
 }
 
-public class Book
+public class Enchantment
 {
-    public int BookId { get; set; }
-    public string Title { get; set; }
-    
-    // Cizí klíč pro spojení s autorem
-    public int AuthorId { get; set; }
-    public Author Author { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int ToolId { get; set; }
+    public Tool Tool { get; set; }
 }
 ```
 
 A teď zpátky k naší databázi...
 
-Vytvoříme složku "Data" a v ní soubor se jménem "mobs.cs".
-Tento soubor bude obsahovat definici třídy pro naši entitu "Mob".
+Vytvoříme složku `Data` a v ní soubor se jménem `mobs.cs`.
+Tento soubor bude obsahovat definici třídy pro naši entitu `Mob`.
 
 ```csharp
 public class Mob
@@ -69,7 +65,7 @@ Datový kontext je základní součástí Entity Frameworku. Jedná se o prostř
 
 Datový kontext nám umožňuje pracovat s entitami (objekty) a provádět operace jako je načítání, ukládání, aktualizace a odstraňování dat z databáze. Také nám umožňuje definovat konfigurace pro mapování mezi objekty a tabulkami v databázi.
 
-Nyní vytvoříme soubor MobsContext.cs uvnitř složky Data a v něm definujeme náš datový kontext:
+Nyní vytvoříme soubor `MobsContext.cs` uvnitř složky Data a v něm definujeme náš datový kontext:
 
 ```csharp
 public class MobsContext : DbContext
@@ -88,12 +84,17 @@ public class MobsContext : DbContext
 }
 ```
 
-Pokračuje s viewmodelem
-Něco málo k MVVM architektuře...
-Vytvoříme pro to soubor MainWindowViewModel.cs
-Pozor na import dat
+## ViewModel
 
-```
+Nyní se podíváme na ViewModel (view model) pro naše hlavní okno. Ale než se ponoříme do kódu, pojďme se nejprve podívat na MVVM architekturu a proč ji používáme v našem případě.
+
+MVVM (Model-View-ViewModel) je architektonický vzor, který je často používán při vývoji aplikací s grafickým uživatelským rozhraním. Tento vzor odděluje prezentaci dat od logiky aplikace a umožňuje snadnější testování, správu kódu a znovupoužití komponent. Používá se často u WPF projektů.
+
+Nyní vytvoříme ViewModel pro naše hlavní okno v souboru `MainWindowViewModel.cs`:
+
+Pozor, musí se přidat `using EFCore.Data` nebo obdobně podle názvu vašeho namespace a složky ve které máte modely.
+
+```csharp
 public class MainWindowViewModel
 {
     public ObservableCollection<Mob> Mobs { get; } = new();
@@ -114,17 +115,21 @@ public class MainWindowViewModel
     }
 
     private void Mobs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-{
-    CollectionViewSource.GetDefaultView(Mobs).Refresh();
-}
+    {
+        CollectionViewSource.GetDefaultView(Mobs).Refresh();
+    }
 }
 ```
 
-Teď už se vrhneme na to GUI 
-Vysvětlit datagrid, ukázat co umí a různý atributy
-To spíš později teď to ještě nepůjde spustit
-Pozor na local a class
-```
+## Návrh GUI
+
+Nyní se podíváme na návrh uživatelského rozhraní (GUI) našeho hlavního okna. 
+
+Následující kód ukazuje implementaci hlavního okna `MainWindow.xaml`, která obsahuje `DataGrid` pro zobrazení dat:
+
+Tady je důležité nastavit xmlns:local a x:Class.
+
+```csharp
 <Window x:Class="EFCore.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -138,18 +143,18 @@ Pozor na local a class
         d:DataContext="{d:DesignInstance Type={x:Type local:MainWindowViewModel}}">
     
     <Grid>
-        <DataGrid x:Name="MobsGrid"  ItemsSource="{Binding Mobs}"/>
+        <DataGrid x:Name="MobsGrid" ItemsSource="{Binding Mobs}"/>
     </Grid>
 </Window>
 ```
 
+## Další nezbytnosti
 
-Model je spojený s GUI, ale ještě nám něco chybí. 
+Model je spojený s GUI, ale ještě nám něco chybí. Následující kód ukazuje implementaci logiky pro hlavní okno `MainWindow.xaml.cs`:
 
-MainWindow.xaml.cs
-Opět import dat 
+Pozor, opět se musí `using EFCore.Data`.
 
-```
+```csharp
 public partial class MainWindow : Window
 {
     private MainWindowViewModel ViewModel { get; }
@@ -170,9 +175,9 @@ public partial class MainWindow : Window
 }
 ```
 
-App.xaml.cs
+Následující kód ukazuje implementaci třídy App v souboru `App.xaml.cs`:
 
-```
+```csharp
 public partial class App : Application
 {
     protected override void OnStartup(StartupEventArgs e)
@@ -188,20 +193,44 @@ public partial class App : Application
 }
 ```
 
+## Vytvoření databáze
 
-Teď už to doufám bude spustitelné. 
-Teď si předvedeme ten datagrid a co všechno umí
-
-Vytvoříme databázi a řekneme si něco o migracích
-
-No, počkat, ale my nemáme zatím žádné moby.
-Nebudeme to psát ručně. Necháme si to vygenerovat.
-
-Složka Generator
-Soubor Generator.cs
-import dat
+Pomocí následujících příkazů vytvoříme databázi
 
 ```
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
+#### Migrace databáze
+
+Migrace databáze jsou postupy, které slouží k aktualizaci schématu databáze na základě změn provedených v modelu Entity Frameworku. Když provedeme změny v datovém modelu (například přidání nové tabulky nebo změna sloupců), musíme také aktualizovat schéma databáze tak, aby odpovídalo novému modelu. Migrace databáze nám umožňují spravovat tento proces aktualizace schématu databáze. Je potřeba vztvářet migraci po každé změně databáze.
+
+Skvěle! Teď, když jsme dokončili konfiguraci a propojení našich vrstev, by měla být naše aplikace připravena k prvnímu spuštění.
+
+## DataGrid
+
+Nyní se podíváme na vyladění našeho DataGridu, abychom mu poskytli lepší vzhled a funkčnost.
+
+```csharp
+<DataGrid x:Name="MobsGrid"  ItemsSource="{Binding Mobs}" AutoGenerateColumns="False"
+          IsReadOnly="False">
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="ID" Binding="{Binding MobId}"
+        <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+        <DataGridTextColumn Header="Date of Capture" Binding="{Binding DateOfCapture, StringFormat='d'}" />
+    </DataGrid.Columns>
+</DataGrid>
+```
+
+## Generování dat
+
+No, počkat, ale my nemáme zatím žádné moby. Nebudeme to psát ručně. Necháme si to vygenerovat.  K tomu použijeme knihovnu `Bogus`, která umožňuje generovat náhodná data podle definovaných pravidel.
+
+Vytvoříme generátor dat v novém souboru Generator.cs ve složce Generator. Zde je kód generátoru:
+
+```csharp
 class DataGenerator
 {
     public static IList<Mob> GenerateMobs(int count)
@@ -217,11 +246,9 @@ class DataGenerator
 }
 ```
 
-Generator budeme volat v App.xaml.cs
+Nyní implementujeme volání našeho generátoru dat při spuštění aplikace v souboru `App.xaml.cs`:
 
-Přidáme 
-
-```
+```csharp
 if (!context.Mobs.Any())
 {
     foreach (var mob in DataGenerator.GenerateMobs(20))
@@ -233,20 +260,29 @@ if (!context.Mobs.Any())
 }
 ```
 
-Máme data v datagridu a dokonce je můžeme měnit. Jenomže se nám to neukládá. 
-Přidáme tlačítko na ukládání.
+## Tlačítka
 
-Asi samostatné cvičení přidat tlačítka 
+Máme data v datagridu a dokonce je můžeme měnit. Jenomže se nám to zatím neukládá. 
 
-MainWindow.xaml
-```
+#### Zadání samostatné práce
+
+Vaším úkolem je přidat tlačítka do uživatelského rozhraní `MainWindow.xaml`, která umožní uživatelům ukládat změny provedené v DataGridu.
+
+Tlačítko pro ukládání: Přidejte tlačítko s názvem `Save`, které umožní uživatelům ukládat změny provedené v DataGridu.
+Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.
+
+#### Řešení:
+
+`MainWindow.xaml`:
+
+```csharp
  <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="690,2,0,0" VerticalAlignment="Top" Width="90" Click="SaveButton_Click"/>
  
  <Button x:Name="Button" Content="Magic Button" HorizontalAlignment="Left" Margin="585,2,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click"/>
 ```
 
-MainWindow.xaml.cs
-```
+`MainWindow.xaml.cs`:
+```csharp
 private void SaveButton_Click(object sender, RoutedEventArgs e)
 {
     ViewModel.SaveChanges();
@@ -258,21 +294,21 @@ private void Button_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-MainWindowViewModel.cs
-```
+`MainWindowViewModel.cs`:
+```csharp
 public void SaveChanges()
 {
     Context.SaveChanges();
 }
 ```
 
-Teď se nám to už i ukládá.
+Výborně. Tlačítko `Save`
 
 Na co je ale to druhé tlačítko?
 Můžeme pomocí něj vygenerovat novou sadu mobů
 
 MainWindow.xaml.cs
-```
+```csharp
 private void Button_Click(object sender, RoutedEventArgs e)
 {
     ViewModel.DeleteAllMobs();
@@ -281,7 +317,7 @@ private void Button_Click(object sender, RoutedEventArgs e)
 ```
 
 MainWindowViewModel.cs
-```
+```csharp
 public void DeleteAllMobs()
 {
     foreach (var mob in Mobs)
@@ -316,7 +352,7 @@ Výsledek je
 
 
 Species.cs
-```
+```csharp
     public class Species
     {
         public int SpeciesId { get; set; }
@@ -328,7 +364,7 @@ Species.cs
 ```
 
 HostilityLevel.cs
-```
+```csharp
     public enum HostilityLevel
     {
         Harmless = 1,
@@ -339,7 +375,7 @@ HostilityLevel.cs
 Změníme i moba
 
 Mobs.cs
-```
+```csharp
 public class Mob
 {
     public int MobId { get; set; }
