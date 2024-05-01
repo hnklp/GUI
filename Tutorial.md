@@ -8,7 +8,7 @@ Entity Framework (EF) je populární ORM framework pro .NET, který umožňuje v
 
 ### Přístupy k programování v EF
 #### Code first
-Code-first je přístup, kdy první vytvoříte třídy C# pro své modely a vytvořené schéma poté použijete pro vytvoření databáze. Tímto způsobem se můžete soustředit na návrh modelu databáze a EF se pak postará o vytvoření databáze.
+[Code-first](https://learn.microsoft.com/en-us/ef/ef6/modeling/designer/workflows/model-first) je přístup, kdy první vytvoříte třídy C# pro své modely a vytvořené schéma poté použijete pro vytvoření databáze. Tímto způsobem se můžete soustředit na návrh modelu databáze a EF se pak postará o vytvoření databáze.
 
 Jak píšeme výše, EF se postará o vytvoření databáze nebo o mapování na již existující databázi, přičemž vychází z modelu, které jste vytvořili.
 
