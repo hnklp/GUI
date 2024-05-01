@@ -1,14 +1,35 @@
 
 # ⛏ Aplikace pro správu databáze našich minecraft mobů
 
-... povídání o EF
+### Co je vlastně ORM?
+ORM (Object-Relational Mapping), je technika programování, která usnadňuje správu databází v objektově orientovaných jazycích. Díky ORM může vývojář manipulovat s daty v databázi přímo pomocí objektů v programovacím jazyku, aniž by musel psát složité SQL dotazy. Tím se značně zjednodušuje a zrychluje vývoj aplikací, zlepšuje čitelnost kódu a udržitelnost projektů.
 
+Entity Framework (EF) je populární ORM framework pro .NET, který umožňuje vývojářům pracovat s databázemi.
+
+### Přístupy k programování v EF
+#### Code first
+Code-first je přístup, kdy první vytvoříte třídy C# pro své modely a vytvořené schéma poté použijete pro vytvoření databáze. Tímto způsobem se můžete soustředit na návrh modelu databáze a EF se pak postará o vytvoření databáze.
+
+Jak píšeme výše, EF se postará o vytvoření databáze nebo o mapování na již existující databázi, přičemž vychází z modelu, které jste vytvořili.
+
+#### Database first
+
+Database first je přístup, jak vytvořit datové modely na základě existující databáze. Datové modely a třídu DbContext vytváříme na základě existujícího schématu databáze. Začneme vytvořením databáze včetně tabulek, jejich vlastností a vztahů mezi nimi.
+
+Postup:
+- Vytvořit/připojit databázi.
+- Použít EF, který vygeneruje potřebné soubory.
+- Použít vygenerované soubory (třídy Entity a DbContext).
+
+### Kompatibilita
+EF Core je kompatibliní s **Microsoft SQL Server**, **SQLite**, **PostgreSQL**, **MySQL**, **MariaDB**, **SQL Server Compact**, **Cosmos DB**, **InMemory**.\
+My budeme pro jednoduchost používat **SQLite**.
 
 ## Vytvoření nového projektu 
 
 Prvním krokem je vytvoření nového projektu ve Visual Studiu. Zvolíme WPF (Windows Presentation Foundation) jako typ projektu. Budeme používat .NET 8.
 
-Budeme potřebovat nainstalovat několik balíčků:
+Budeme potřebovat nainstalovat několik NuGet balíčků:
 - Microsoft.EntityFrameworkCore.Sqlite
 - Microsoft.EntityFrameworkCore.Design
 - Bogus
