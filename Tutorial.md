@@ -238,7 +238,7 @@ Nyní se podíváme na vyladění našeho DataGridu, abychom mu poskytli lepší
 <DataGrid x:Name="MobsGrid"  ItemsSource="{Binding Mobs}" AutoGenerateColumns="False"
           IsReadOnly="False">
     <DataGrid.Columns>
-        <DataGridTextColumn Header="ID" Binding="{Binding MobId}"
+        <DataGridTextColumn Header="ID" Binding="{Binding MobId}" />
         <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
         <DataGridTextColumn Header="Date of Capture" Binding="{Binding DateOfCapture, StringFormat='d'}" />
     </DataGrid.Columns>
@@ -260,7 +260,7 @@ class DataGenerator
             .StrictMode(true)
             .RuleFor(x => x.MobId, f => f.IndexGlobal)
             .RuleFor(x => x.Name, f => f.Person.FirstName)
-            .RuleFor(x => x.DateOfCapture, f => f.Person.DateOfBirth)
+            .RuleFor(x => x.DateOfCapture, f => f.Person.DateOfBirth);
 
         return generator.Generate(count);
     }
@@ -285,12 +285,12 @@ if (!context.Mobs.Any())
 
 Máme data v datagridu a dokonce je můžeme měnit. Jenomže se nám to zatím neukládá. 
 
-#### Zadání samostatné práce
+#### Zadání samostatné práce:
 
 Vaším úkolem je přidat tlačítka do uživatelského rozhraní `MainWindow.xaml`, která umožní uživatelům ukládat změny provedené v DataGridu.
 
-Tlačítko pro ukládání: Přidejte tlačítko s názvem `Save`, které umožní uživatelům ukládat změny provedené v DataGridu.
-Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.
+- Tlačítko pro ukládání: Přidejte tlačítko s názvem `Save`, které umožní uživatelům ukládat změny provedené v DataGridu.
+- Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.
 
 #### Řešení:
 
@@ -323,12 +323,9 @@ public void SaveChanges()
 }
 ```
 
-Výborně. Tlačítko `Save`
+Výborně. Tlačítko `Save` už máme. Na co je ale to druhé tlačítko? Můžeme pomocí něj vygenerovat novou sadu mobů.
 
-Na co je ale to druhé tlačítko?
-Můžeme pomocí něj vygenerovat novou sadu mobů
-
-MainWindow.xaml.cs
+`MainWindow.xaml.cs`:
 ```csharp
 private void Button_Click(object sender, RoutedEventArgs e)
 {
@@ -337,7 +334,7 @@ private void Button_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-MainWindowViewModel.cs
+`MainWindowViewModel.cs`:
 ```csharp
 public void DeleteAllMobs()
 {
@@ -361,30 +358,32 @@ public void GenerateMobs()
 }
 ```
 
-Výborně. máme i tlačítko
+## Nové modely
 
 No, ale pořád máme jen seznam našich mobů s jedním modelem. To může být nepraktické. Když z tabulky nepoznáme, jestli je František slepice v ohrádce nebo creeper, co se nám usídlil ve sklepě pod domem.
 
-Z tohoto důvodu přidáme další model pro druh moba
+#### Zadání samostatné práce:
 
-samostatné cvičení pro tvoření modelů
+Vaším úkolem je přidat do aplikace další model pro druhy mobů, abychom mohli přidělovat jednotlivým "mobům" druh.
 
-Výsledek je
+- Vytvoření modelu pro druhy mobů: Vytvořte novou třídu Species se vlastnostmi pro identifikátor druhu (SpeciesId), název (Title) a úroveň nepřátelství (Hostility). Vlastnost Hostility bude enum HostilityLevel.
+- Vytvoření enumu pro úroveň nepřátelství: Vytvořte enum HostilityLevel s třemi hodnotami: Harmless, FightsBack a Hostile.
+- Aktualizace modelu "mob": Přidejte do modelu Mob cizí klíč pro species.
 
+#### Řešení:
 
-Species.cs
+`Species.cs`:
 ```csharp
     public class Species
     {
         public int SpeciesId { get; set; }
         public string Title { get; set; }
         public HostilityLevel Hostility { get; set; }
-
         public virtual List<Mob>? Mobs { get; set; }
     }
 ```
 
-HostilityLevel.cs
+`HostilityLevel.cs`:
 ```csharp
     public enum HostilityLevel
     {
@@ -393,9 +392,8 @@ HostilityLevel.cs
         Hostile = 3
     }
 ```
-Změníme i moba
 
-Mobs.cs
+`Mobs.cs`:
 ```csharp
 public class Mob
 {
@@ -407,6 +405,4 @@ public class Mob
 }
 ```
 
-Uděláme migraci a úpravu zbytku kódu, aby nám fungovaly nové modely. Plnění databáze
-
-Jestli nám zbyde čas, tak si budeme hrát s tlačítkem
+Po tomto kroku uděláme znovu migraci, protože jsme změnili databázi.
