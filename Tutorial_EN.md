@@ -1,50 +1,53 @@
 
-# ⛏ Aplikace pro správu databáze našich minecraft mobů
+# ⛏ An app to manage our minecraft mob database
 
-### Co je vlastně ORM?
-ORM (Object-Relational Mapping), je technika programování, která usnadňuje správu databází v objektově orientovaných jazycích. Díky ORM může vývojář manipulovat s daty v databázi přímo pomocí objektů v programovacím jazyku, aniž by musel psát složité SQL dotazy. Tím se značně zjednodušuje a zrychluje vývoj aplikací, zlepšuje čitelnost kódu a udržitelnost projektů.
+> [!CAUTION]
+> This text was machine translated. We are not responsible for any damage caused to You, Your loved ones, The Universe™ or Your property.
 
-Entity Framework (EF) je populární ORM framework pro .NET, který umožňuje vývojářům pracovat s databázemi.
+### What is ORM?
+ORM (Object-Relational Mapping), is a programming technique that facilitates database management in object-oriented languages. With ORM, a developer can manipulate data in a database directly using objects in a programming language without having to write complex SQL queries. This greatly simplifies and speeds up application development, improves code readability and project sustainability.
 
-### Přístupy k programování v EF
+Entity Framework (EF) is a popular ORM framework for .NET that allows developers to work with databases.
+
+### Approaches to EF programming
 #### Code first
-[Code-first](https://learn.microsoft.com/en-us/ef/ef6/modeling/designer/workflows/model-first) je přístup, kdy první vytvoříte třídy C# pro své modely a vytvořené schéma poté použijete pro vytvoření databáze. Tímto způsobem se můžete soustředit na návrh modelu databáze a EF se pak postará o vytvoření databáze.
+[Code-first](https://learn.microsoft.com/en-us/ef/ef6/modeling/designer/workflows/model-first) is an approach where you first create C# classes for your models and then use the schema you create to create a database. This way you can concentrate on designing the database model and EF will then take care of creating the database.
 
-Jak píšeme výše, EF se postará o vytvoření databáze nebo o mapování na již existující databázi, přičemž vychází z modelu, které jste vytvořili.
+As we write above, EF will take care of creating the database or mapping it to an existing database based on the model you have created.
 
 #### Database first
 
-Database first je přístup, jak vytvořit datové modely na základě existující databáze. Datové modely a třídu DbContext vytváříme na základě existujícího schématu databáze. Začneme vytvořením databáze včetně tabulek, jejich vlastností a vztahů mezi nimi.
+Database first is an approach to create data models based on an existing database. We create data models and the DbContext class based on an existing database schema. We start by creating the database including the tables, their properties, and the relationships between them.
 
-Postup:
-- Vytvořit/připojit databázi.
-- [Použít EF](https://learn.microsoft.com/en-us/ef/ef6/modeling/designer/workflows/database-first), který vygeneruje potřebné soubory.
-- Použít vygenerované soubory (třídy Entity a DbContext).
+Procedure:
+- Create/connect the database.
+- [Use EF](https://learn.microsoft.com/en-us/ef/ef6/modeling/designer/workflows/database-first), which will generate the necessary files.
+- Use the generated files (Entity and DbContext classes).
 
-### Kompatibilita
-EF Core je kompatibliní s **Microsoft SQL Server**, **SQLite**, **PostgreSQL**, **MySQL**, **MariaDB**, **SQL Server Compact**, **Cosmos DB**, **InMemory**.\
-My budeme pro jednoduchost používat **SQLite**.
+### Compatibility
+EF Core is compatible with **Microsoft SQL Server**, **SQLite**, **PostgreSQL**, **MySQL**, **MariaDB**, **SQL Server Compact**, **Cosmos DB**, **InMemory**.
+We will use **SQLite** for simplicity.
 
-## Vytvoření nového projektu 
+## Creating a new project 
 
-Prvním krokem je vytvoření nového projektu ve Visual Studiu. Zvolíme WPF C# (Windows Presentation Foundation) jako typ projektu. Budeme používat .NET 8.
+The first step is to create a new project in Visual Studio. We will choose WPF C# (Windows Presentation Foundation) as the project type. We will use .NET 8.
 
-Budeme potřebovat nainstalovat několik NuGet balíčků:
+We will need to install several NuGet packages:
 - Microsoft.EntityFrameworkCore.Sqlite
 - Microsoft.EntityFrameworkCore.Design
 - Bogus
 
 
 ## Model
-Při práci s Entity Frameworkem je model klíčovou součástí. Model nám poskytuje abstrakci nad naší databází a definuje, jak jsou naše entity reprezentovány v našem kódu.
+When working with Entity Framework, the model is a key component. The model provides us with an abstraction over our database and defines how our entities are represented in our code.
 
-V rámci Entity Frameworku je model soubor tříd, které představují entity v naší databázi. Tyto třídy obsahují vlastnosti, které odpovídají sloupcům v tabulkách naší databáze, a definují vztahy mezi těmito entitami.
+Within the Entity Framework, a model is a set of classes that represent the entities in our database. These classes contain properties that correspond to the columns in the tables of our database, and define the relationships between these entities.
 
-#### Povinnost atributů
-Atribut je povinný a nebo ne podle toho, zda proměnná může obsahovat null. 
+#### Attribute Obligation
+An attribute is mandatory or not depending on whether the variable can contain null. 
 
-#### Vztahy mezi entitami
-Ukázka vztahu 1:N
+#### Relationships between entities
+Sample 1:N relationship
 
 ```csharp
 public class Tool
@@ -63,10 +66,10 @@ public class Enchantment
 }
 ```
 
-A teď zpátky k naší databázi...
+Now, back to our database...
 
-Vytvoříme složku `Data` a v ní soubor se jménem `mobs.cs`.
-Tento soubor bude obsahovat definici třídy pro naši entitu `Mob`.
+We'll create a `Data` folder and in it a file called `mobs.cs`.
+This file will contain the class definition for our `Mob` entity.
 
 ```csharp
 public class Mob
@@ -78,15 +81,15 @@ public class Mob
     }
 ```
 
-## Datový kontext
+## Data context
 
-Předtím než připravíme uživatelské rozhraní (GUI) pro zobrazení dat, je potřeba nejdříve propojit několik vrstev naší aplikace. První vrstvou, kterou musíme připravit, je datový kontext.
+Before we prepare the user interface (GUI) for displaying data, we first need to connect several layers of our application. The first layer we need to prepare is the data context.
 
-Datový kontext je základní součástí Entity Frameworku. Jedná se o prostředek pro komunikaci s databází a poskytuje sadu vlastností a metod pro práci s daty. Proč ho potřebujeme?
+The data context is a fundamental part of the Entity Framework. It is a means of communicating with the database and provides a set of properties and methods for working with data. Why do we need it?
 
-Datový kontext nám umožňuje pracovat s entitami (objekty) a provádět operace jako je načítání, ukládání, aktualizace a odstraňování dat z databáze. Také nám umožňuje definovat konfigurace pro mapování mezi objekty a tabulkami v databázi.
+The data context allows us to work with entities (objects) and perform operations such as retrieving, saving, updating, and removing data from the database. It also allows us to define configurations for mapping between objects and tables in the database.
 
-Nyní vytvoříme soubor `MobsContext.cs` uvnitř složky Data a v něm definujeme náš datový kontext:
+Now we create a file `MobsContext.cs` inside the Data folder and define our data context in it:
 
 ```csharp
 public class MobsContext : DbContext
@@ -107,13 +110,13 @@ public class MobsContext : DbContext
 
 ## ViewModel
 
-Nyní se podíváme na ViewModel (view model) pro naše hlavní okno. Ale než se ponoříme do kódu, pojďme se nejprve podívat na MVVM architekturu a proč ji používáme v našem případě.
+Now let's look at the ViewModel (view model) for our main window. But before we dive into the code, let's first take a look at the MVVM architecture and why we are using it in our case.
 
-MVVM (Model-View-ViewModel) je architektonický vzor, který je často používán při vývoji aplikací s grafickým uživatelským rozhraním. Tento vzor odděluje prezentaci dat od logiky aplikace a umožňuje snadnější testování, správu kódu a znovupoužití komponent. Používá se často u WPF projektů.
+MVVM (Model-View-ViewModel) is an architectural pattern that is often used when developing GUI applications. This pattern separates the data presentation from the application logic and allows for easier testing, code management, and component reuse. It is often used in WPF projects.
 
-Nyní vytvoříme ViewModel pro naše hlavní okno v souboru `MainWindowViewModel.cs`:
+Now we will create a ViewModel for our main window in the `MainWindowViewModel.cs` file:
 
-Pozor, musí se přidat `using EFCore.Data` nebo obdobně podle názvu vašeho namespace a složky ve které máte modely.
+Note, you must add `using EFCore.Data` or similar depending on your namespace and the folder you have the models in.
 
 ```csharp
 public class MainWindowViewModel
@@ -142,13 +145,13 @@ public class MainWindowViewModel
 }
 ```
 
-## Návrh GUI
+## GUI design
 
-Nyní se podíváme na návrh uživatelského rozhraní (GUI) našeho hlavního okna. 
+Now let's look at the user interface (GUI) design of our main window. 
 
-Následující kód ukazuje implementaci hlavního okna `MainWindow.xaml`, která obsahuje `DataGrid` pro zobrazení dat:
+The following code shows the `MainWindow.xaml` implementation of the main window, which contains a `DataGrid` for displaying data:
 
-Tady je důležité nastavit xmlns:local a x:Class.
+Here it is important to set xmlns:local and x:Class.
 
 ```csharp
 <Window x:Class="EFCore.MainWindow"
@@ -169,11 +172,11 @@ Tady je důležité nastavit xmlns:local a x:Class.
 </Window>
 ```
 
-## Další nezbytnosti
+## Other essentials
 
-Model je spojený s GUI, ale ještě nám něco chybí. Následující kód ukazuje implementaci logiky pro hlavní okno `MainWindow.xaml.cs`:
+The model is linked to the GUI, but we are still missing something. The following code shows the implementation of the logic for the main window `MainWindow.xaml.cs`:
 
-Pozor, opět se musí `using EFCore.Data`.
+Note that again, it must be `using EFCore.Data`.
 
 ```csharp
 public partial class MainWindow : Window
@@ -196,7 +199,7 @@ public partial class MainWindow : Window
 }
 ```
 
-Následující kód ukazuje implementaci třídy App v souboru `App.xaml.cs`:
+The following code shows the implementation of the App class in the `App.xaml.cs` file:
 
 ```csharp
 public partial class App : Application
@@ -214,9 +217,9 @@ public partial class App : Application
 }
 ```
 
-## Vytvoření databáze
+## Creating a database
 
-Pomocí následujících příkazů vytvoříme databázi
+Use the following commands to create a database
 
 ```
 dotnet tool install --global dotnet-ef
@@ -224,18 +227,18 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-#### Migrace databáze
+#### Database Migration
 
-Migrace databáze jsou postupy, které slouží k aktualizaci schématu databáze na základě změn provedených v modelu Entity Frameworku. Když provedeme změny v datovém modelu (například přidání nové tabulky nebo změna sloupců), musíme také aktualizovat schéma databáze tak, aby odpovídalo novému modelu. Migrace databáze nám umožňují spravovat tento proces aktualizace schématu databáze. Je potřeba vztvářet migraci po každé změně databáze.
+Database migrations are procedures that are used to update the database schema based on changes made to the Entity Framework model. When we make changes to the data model (such as adding a new table or changing columns), we must also update the database schema to match the new model. Database migrations allow us to manage this process of updating the database schema. We need to create a migration after each database change.
 
-Skvěle! Teď, když jsme dokončili konfiguraci a propojení našich vrstev, by měla být naše aplikace připravena k prvnímu spuštění.
+Great! Now that we've finished configuring and linking our layers, our application should be ready to go live for the first time.
 
 ## DataGrid
 
-Nyní se podíváme na vyladění našeho DataGridu, abychom mu poskytli lepší vzhled a funkčnost.
+Now let's look at tweaking our DataGrid to give it a better look and functionality.
 
 ```csharp
-<DataGrid x:Name="MobsGrid"  ItemsSource="{Binding Mobs}" AutoGenerateColumns="False"
+<DataGrid x:Name="MobsGrid" ItemsSource="{Binding Mobs}" AutoGenerateColumns="False"
           IsReadOnly="False">
     <DataGrid.Columns>
         <DataGridTextColumn Header="ID" Binding="{Binding MobId}" />
@@ -245,11 +248,11 @@ Nyní se podíváme na vyladění našeho DataGridu, abychom mu poskytli lepší
 </DataGrid>
 ```
 
-## Generování dat
+## Data generation
 
-No, počkat, ale my nemáme zatím žádné moby. Nebudeme to psát ručně. Necháme si to vygenerovat.  K tomu použijeme knihovnu `Bogus`, která umožňuje generovat náhodná data podle definovaných pravidel.
+Well, wait, but we don't have any mobs yet. We're not gonna write it by hand. We'll have it generated.  To do this, we'll use the `God' library, which allows us to generate random data according to defined rules.
 
-Vytvoříme generátor dat v novém souboru Generator.cs ve složce Generator. Zde je kód generátoru:
+We'll create the data generator in a new Generator.cs file in the Generator folder. Here is the code for the generator:
 
 ```csharp
 class DataGenerator
@@ -267,7 +270,7 @@ class DataGenerator
 }
 ```
 
-Nyní implementujeme volání našeho generátoru dat při spuštění aplikace v souboru `App.xaml.cs`:
+We now implement the call to our data generator when the application is run in the `App.xaml.cs` file:
 
 ```csharp
 if (!context.Mobs.Any())
@@ -281,19 +284,19 @@ if (!context.Mobs.Any())
 }
 ```
 
-## Tlačítka
+## Buttons
 
-Máme data v datagridu a dokonce je můžeme měnit. Jenomže se nám to zatím neukládá. 
+We have the data in the datagrid and we can even change it. It's just that we're not saving it yet. 
 
-#### Zadání samostatné práce:
+#### Independent work assignment:
 
-Vaším úkolem je přidat tlačítka do uživatelského rozhraní `MainWindow.xaml`, která umožní uživatelům ukládat změny provedené v DataGridu.
+Your task is to add buttons to the `MainWindow.xaml` user interface that will allow users to save changes made to the DataGrid.
 
-- Tlačítko pro ukládání: Přidejte tlačítko s názvem `Save`, které umožní uživatelům ukládat změny provedené v DataGridu.
-- Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.\
+- Save Button: Add a button named `Save` that will allow users to save changes made to the DataGrid.
+- Magic Button: Add a button called `Magic Button` that does nothing for now.\
   
 <details>
-<summary>Řešení</summary>
+<summary>Solution</summary>
 
 `MainWindow.xaml`:
 
@@ -317,17 +320,17 @@ private void Button_Click(object sender, RoutedEventArgs e)
 ```
 
 `MainWindowViewModel.cs`:
-```csharp
+``csharp
 public void SaveChanges()
 {
     Context.SaveChanges();
 }
 ```
 
-Výborně. Tlačítko `Save` už máme. Na co je ale to druhé tlačítko? Můžeme pomocí něj vygenerovat novou sadu mobů.
+Well done. We already have the `Save` button. But what is the second button for? We can use it to generate a new set of mobs.
 
 `MainWindow.xaml.cs`:
-```csharp
+``csharp
 private void Button_Click(object sender, RoutedEventArgs e)
 {
     ViewModel.DeleteAllMobs();
@@ -336,7 +339,7 @@ private void Button_Click(object sender, RoutedEventArgs e)
 ```
 
 `MainWindowViewModel.cs`:
-```csharp
+``csharp
 public void DeleteAllMobs()
 {
     foreach (var mob in Mobs)
@@ -360,22 +363,22 @@ public void GenerateMobs()
 ```
 </details>
 
-## Nové modely
+## New models
 
-No, ale pořád máme jen seznam našich mobů s jedním modelem. To může být nepraktické. Když z tabulky nepoznáme, jestli je František slepice v ohrádce nebo creeper, co se nám usídlil ve sklepě pod domem.
+Well, we still only have a list of our mobs with one model. That can be impractical. When we can't tell from the table if Francis is a chicken in a pen or a creeper that's taken up residence in the basement under our house.
 
-#### Zadání samostatné práce:
+#### Independent work assignment:
 
-Vaším úkolem je přidat do aplikace další model pro druhy mobů, abychom mohli přidělovat jednotlivým "mobům" druh.
+Your task is to add another model for mob types to the application so that we can assign a type to each "mob".
 
-- Vytvoření modelu pro druhy mobů: Vytvořte novou třídu Species se vlastnostmi pro identifikátor druhu (SpeciesId), název (Title) a úroveň nepřátelství (Hostility). Vlastnost Hostility bude enum HostilityLevel.
-- Vytvoření enumu pro úroveň nepřátelství: Vytvořte enum HostilityLevel s třemi hodnotami: Harmless, FightsBack a Hostile.
-- Aktualizace modelu "mob": Přidejte do modelu Mob cizí klíč pro species.
+- Create a new Species class with properties for the species identifier (SpeciesId), name (Title) and hostility level (Hostility). The Hostility property will be the enum HostilityLevel.
+- Create a HostilityLevel enum: Create a HostilityLevel enum with three values: Harmless, FightsBack and Hostile.
+- Mob Update: Add a foreign key for species to the Mob model.
 <details>
-<summary>Řešení</summary>
+<summary>Solution</summary>
 
 `Species.cs`:
-```csharp
+``csharp
     public class Species
     {
         public int SpeciesId { get; set; }
@@ -386,7 +389,7 @@ Vaším úkolem je přidat do aplikace další model pro druhy mobů, abychom mo
 ```
 
 `HostilityLevel.cs`:
-```csharp
+``csharp
     public enum HostilityLevel
     {
         Harmless = 1,
@@ -407,5 +410,5 @@ public class Mob
 }
 ```
 
-Po tomto kroku uděláme znovu migraci, protože jsme změnili databázi.
+After this step, we do the migration again because we changed the database.
 </details>
