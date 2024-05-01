@@ -18,7 +18,7 @@ Database first je přístup, jak vytvořit datové modely na základě existují
 
 Postup:
 - Vytvořit/připojit databázi.
-- Použít EF, který vygeneruje potřebné soubory.
+- [Použít EF](https://learn.microsoft.com/en-us/ef/ef6/modeling/designer/workflows/database-first), který vygeneruje potřebné soubory.
 - Použít vygenerované soubory (třídy Entity a DbContext).
 
 ### Kompatibilita
