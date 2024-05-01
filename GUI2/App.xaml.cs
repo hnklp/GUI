@@ -16,7 +16,6 @@ namespace EFCore
         protected override void OnStartup(StartupEventArgs e)
         {
 
-
             using(var context= new MobsContext())
             {
                 context.Database.Migrate();
