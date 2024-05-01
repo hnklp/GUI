@@ -359,6 +359,7 @@ public void GenerateMobs()
 }
 ```
 </details>
+
 ## Nové modely
 
 No, ale pořád máme jen seznam našich mobů s jedním modelem. To může být nepraktické. Když z tabulky nepoznáme, jestli je František slepice v ohrádce nebo creeper, co se nám usídlil ve sklepě pod domem.
