@@ -290,7 +290,7 @@ Máme data v datagridu a dokonce je můžeme měnit. Jenomže se nám to zatím 
 Vaším úkolem je přidat tlačítka do uživatelského rozhraní `MainWindow.xaml`, která umožní uživatelům ukládat změny provedené v DataGridu.
 
 - Tlačítko pro ukládání: Přidejte tlačítko s názvem `Save`, které umožní uživatelům ukládat změny provedené v DataGridu.
-- Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.\
+- Magické tlačítko: Přidejte tlačítko s názvem `Magic Button`, které zatím nedělá nic.
   
 <details>
 <summary>Řešení</summary>
